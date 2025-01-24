@@ -1,13 +1,55 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="index.css">
+  <title>Vite + React</title>
+  
+  
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav id="nav">
+    <h1>My Website</h1>
+    <button id="logout" style="float: right;">Logout</button\>
+  </nav>
+
+  <!-- Main Container -->
+  <div id="container">
+    <!-- Left Box -->
+    <div id="left-box">
+      <p>Left Box Content</p>
+    </div>
+
+    <!-- Right Box -->
+    <div id="right-box">
+      <div id="searchBar">
+        <input type="text" placeholder="Search...">
+        <button>Filter</button>
+      </div>
+      <div id="recommendations"></div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+  <script>
+    // Redirect to login if not authenticated
+    if (!sessionStorage.getItem("isLoggedIn")) {
+      window.location.href = "login.html";
+    }
+
+    // Logout functionality
+    document.getElementById("logout").addEventListener("click", () => {
+      sessionStorage.removeItem("isLoggedIn");
+      alert("You have been logged out.");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+
+
 </html>
