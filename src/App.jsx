@@ -1,7 +1,7 @@
 import ProviderRegistrationForm from "./Components/ProviderRegistrationForm"
 
 const App = () => {
-  return <ProviderRegistrationForm/>
+  return <Provida />
 }
 
 export default App;
