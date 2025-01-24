@@ -1,0 +1,59 @@
+.img1 {
+    width: 20%;
+    height: 20%;
+    border: none;
+    border-radius: 15px;
+    position: relative;
+}
+
+.duration {
+    position: absolute;
+    bottom: 29px;
+    left: 222px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1e1e1ec7;
+    color: white;
+    font-size: 16px;
+    padding: 6px
+}
+
+.container {
+    position: relative;
+    padding: 25px;
+    display: flex;
+    background-color: #121111;
+    border: none;
+    border-radius: 10px;
+}
+
+.data {
+    color: white;
+    padding: 0px 0px 0px 7px;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.content {
+    /* border: 2px solid white; */
+    padding: 0px 0px 0px 6px;
+    font-weight: 595;
+
+}
+
+.title {
+    font-size: 20px;
+
+}
+
+.stats {
+    padding: 25px 0px 0px 6px;
+    font-size: 13px;
+    color: grey;
+}
+
+#lol{
+    width: 100px;
+    height: 100px;
+    border: black solid 2px;
+}
