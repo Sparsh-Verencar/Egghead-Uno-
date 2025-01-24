@@ -1,22 +1,92 @@
-function createCard(serviceName, businessName, price, thumbnail){
-    // if(views >= 1e9){
-    //     views = `${views/1e9}B`
-    // }
-    // else if(views >= 1e6){
-    //     views = `${views/1e6}M`
-    // }
-    // else if(views >= 1e3){
-    //     views = `${views/1e3}k`
-    // }
-    document.querySelector(".price").innerHTML = `${price}`
-    document.querySelector(".img1").src = `${thumbnail}`
-    // document.querySelector(".upldTime").innerHTML = `${monthsOld} months old`
-    // document.querySelector(".views").innerHTML = `${views} views .`
-    document.querySelector(".businessName").innerHTML = `${businessName}`
-    document.querySelector(".serviceName").innerHTML = `${serviceName}`
+function createPanel({ imgSrc, serviceName, businessName, price }) {
+    // Get the recommendations container
+    const recommendationsContainer = document.getElementById("recommendations");
+  
+    // Create a new panel
+    const panel = document.createElement("div");
+    panel.classList.add("panel");
+  
+    // Create the image element
+    const img = document.createElement("img");
+    img.src = imgSrc;
+    img.alt = `${serviceName} image`;
+  
+    // Create the service name element
+    const serviceNameDiv = document.createElement("div");
+    serviceNameDiv.classList.add("serviceName");
+    serviceNameDiv.textContent = serviceName;
+  
+    // Create the business name element
+    const businessNameDiv = document.createElement("div");
+    businessNameDiv.classList.add("businessName");
+    businessNameDiv.textContent = businessName;
+  
+    // Create the price element
+    const priceDiv = document.createElement("div");
+    priceDiv.classList.add("price");
+    priceDiv.textContent = `$${price}`;
+  
+    // Append all elements to the panel
+    panel.appendChild(img);
+    panel.appendChild(serviceNameDiv);
+    panel.appendChild(businessNameDiv);
+    panel.appendChild(priceDiv);
+  
+    // Append the panel to the recommendations container
+    recommendationsContainer.appendChild(panel);
   }
-  createCard("Stylish hair cutting", "babar barber", "5$", "Egghead-Uno-/images/hairCutting.jpeg" )
-  createCard("Stylish hair cutting", "babar barber", "5$", "Egghead-Uno-/images/hairCutting.jpeg" )
-  createCard("Stylish hair cutting", "babar barber", "5$", "Egghead-Uno-/images/hairCutting.jpeg" )
-  createCard("Stylish hair cutting", "babar barber", "5$", "Egghead-Uno-/images/hairCutting.jpeg" )
-  createCard("Stylish hair cutting", "babar barber", "5$", "Egghead-Uno-/images/hairCutting.jpeg" )
+  
+
+  createPanel({
+    imgSrc: "https://via.placeholder.com/150", // Replace with actual image URL
+    serviceName: "Hair Cutting",
+    businessName: "John's Salon",
+    price: "20.00",
+  });
+  
+  createPanel({
+    imgSrc: "https://via.placeholder.com/150", // Replace with actual image URL
+    serviceName: "Spa Treatment",
+    businessName: "Luxury Spa",
+    price: "50.00",
+  });
+  createPanel({
+    imgSrc: "https://via.placeholder.com/150", // Replace with actual image URL
+    serviceName: "Hair Cutting",
+    businessName: "John's Salon",
+    price: "20.00",
+  });
+  
+  createPanel({
+    imgSrc: "https://via.placeholder.com/150", // Replace with actual image URL
+    serviceName: "Spa Treatment",
+    businessName: "Luxury Spa",
+    price: "50.00",
+  });
+  createPanel({
+    imgSrc: "https://via.placeholder.com/150", // Replace with actual image URL
+    serviceName: "Hair Cutting",
+    businessName: "John's Salon",
+    price: "20.00",
+  });
+  
+  createPanel({
+    imgSrc: "https://via.placeholder.com/150", // Replace with actual image URL
+    serviceName: "Spa Treatment",
+    businessName: "Luxury Spa",
+    price: "50.00",
+  });
+  createPanel({
+    imgSrc: "https://via.placeholder.com/150", // Replace with actual image URL
+    serviceName: "Hair Cutting",
+    businessName: "John's Salon",
+    price: "20.00",
+  });
+  
+  createPanel({
+    imgSrc: "https://via.placeholder.com/150", // Replace with actual image URL
+    serviceName: "Spa Treatment",
+    businessName: "Luxury Spa",
+    price: "50.00",
+  });
+        

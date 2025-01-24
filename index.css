@@ -1,57 +1,110 @@
-body{
-    background-color:#2a2a2a;
-}
-
-.img1 {
-    width: 20%;
-    height: 20%;
-    border: none;
-    border-radius: 15px;
-    position: relative;
-}
-
-.duration {
-    /* position: ; */
-    /* bottom: 29px; */
-    /* left: 222px; */
-    border: none;
-    border-radius: 5px;
-    background-color: #1e1e1ec7;
-    color: white;
-    font-size: 16px;
-    padding: 6px
-}
-
-.plate {
-    position: relative;
-    padding: 25px;
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    height: 100vh; /* Full viewport height */
     display: flex;
-    background-color: #121111;
-    border: rgb(212, 9, 212) solid 2px;
-    border-radius: 10px;
-    justify-content: space-between;
-}
-
-.info {
-    font-weight: 595;
-    font-size: 19px;
-    /* display: flex; */
+    flex-direction: column;
+  }
+  
+  #nav {
+    background-color: #333;
     color: white;
-    padding: 0px 0px 0px 7px;
-    /* display: flex;
-    flex-direction: column; */
-    /* padding: 0px 0px 0px 6px; */
-}
-
-.businessName{
-    font-weight: 300;
-    font-size: 15px;
-
-}
-
-.price{
-    font-size: 29px;
-    color: aliceblue;
-}
-
-
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  /* Main container layout */
+  #container {
+    display: flex;
+    gap: 1rem;
+    flex-grow: 1;
+    padding: 1rem;
+    background-color: #007bff;
+    overflow: hidden; /* Prevent unwanted scrolling */
+  }
+  
+  /* Left Box */
+  #left-box {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 25%; /* Fixed width for left box */
+    height: 100%; /* Full height of the container */
+    overflow-y: auto; /* Enable scrolling for left box if needed */
+  }
+  
+  /* Right Box */
+  #right-box {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    height: 100%; /* Full height of the container */
+    overflow: hidden; /* Prevent unwanted scrolling */
+  }
+  
+  /* Search bar */
+  #searchBar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  #searchBar input {
+    width: 70%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  #searchBar button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #searchBar button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Recommendations Section */
+  #recommendations {
+    flex-grow: 1;
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 1rem;
+    height: calc(100% - 3rem); /* Adjust height dynamically */
+  }
+  
+  .panel {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .panel img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+  }
+  
