@@ -1,5 +1,7 @@
+import ProviderRegistrationForm from "./Components/ProviderRegistrationForm"
+
 const App = () => {
-  return <h1>Hello World</h1>
+  return <ProviderRegistrationForm/>
 }
 
 export default App;
