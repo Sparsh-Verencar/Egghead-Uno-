@@ -16,8 +16,12 @@ const Home = () => {
   const handleLogout = () => {
     sessionStorage.removeItem('isLoggedIn');
     navigate('/');
-    alert('You have been logged out.');
+    // alert('You have been logged out.');
   };
+
+  const preferences_redirect = () =>{
+    navigate('/preferences')
+  }
 
   // Sample panel data
   const panelsData = [
@@ -67,7 +71,7 @@ const Home = () => {
   ];
 
   return (
-    <div>
+    <div className='home-page'>
       {/* Navigation Bar */}
       <nav id="nav">
         <h1>My Website</h1>
@@ -79,7 +83,7 @@ const Home = () => {
         {/* Left Box */}
         <div id="left-box">
           <p>Left Box Content</p>
-          <button id='preferences'> set preferences </button>
+          <button id='preferences' onClick={preferences_redirect} > set preferences</button>
         </div>
 
         {/* Right Box */}
