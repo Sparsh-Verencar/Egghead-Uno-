@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';  // To navigate programmatically
+import Panel from './panel';  // Import the Panel component
 import './home.css';
 
 const Home = () => {
@@ -18,12 +19,59 @@ const Home = () => {
     alert('You have been logged out.');
   };
 
+  // Sample panel data
+  const panelsData = [
+    {
+      imgSrc: "https://via.placeholder.com/150",
+      serviceName: "Hair Cutting",
+      businessName: "John's Salon",
+      price: "20.00",
+    },
+    {
+      imgSrc: "https://via.placeholder.com/150",
+      serviceName: "Massage",
+      businessName: "Relax Spa",
+      price: "50.00",
+    },
+    {
+      imgSrc: "https://via.placeholder.com/150",
+      serviceName: "Massage",
+      businessName: "Relax Spa",
+      price: "50.00",
+    },
+    {
+      imgSrc: "https://via.placeholder.com/150",
+      serviceName: "Massage",
+      businessName: "Relax Spa",
+      price: "50.00",
+    },
+    {
+      imgSrc: "https://via.placeholder.com/150",
+      serviceName: "Massage",
+      businessName: "Relax Spa",
+      price: "50.00",
+    },
+    {
+      imgSrc: "https://via.placeholder.com/150",
+      serviceName: "Massage",
+      businessName: "Relax Spa",
+      price: "50.00",
+    },
+    {
+      imgSrc: "https://via.placeholder.com/150",
+      serviceName: "Massage",
+      businessName: "Relax Spa",
+      price: "50.00",
+    }
+    // Add more data objects for more panels
+  ];
+
   return (
     <div>
       {/* Navigation Bar */}
       <nav id="nav">
         <h1>My Website</h1>
-        <button id="logout" style={{ float: 'right' }} onClick={handleLogout}>Logout</button>
+        <button id="logout" onClick={handleLogout}>Logout</button>
       </nav>
 
       {/* Main Container */}
@@ -31,6 +79,7 @@ const Home = () => {
         {/* Left Box */}
         <div id="left-box">
           <p>Left Box Content</p>
+          <button id='preferences'> set preferences </button>
         </div>
 
         {/* Right Box */}
@@ -46,7 +95,20 @@ const Home = () => {
             </div>
             <button>Filter</button>
           </div>
-          <div id="recommendations"></div>
+
+          {/* Recommendations Section */}
+          <div id="recommendations">
+            {/* Render Panel components dynamically */}
+            {panelsData.map((data, index) => (
+              <Panel 
+                key={index}
+                imgSrc={data.imgSrc}
+                serviceName={data.serviceName}
+                businessName={data.businessName}
+                price={data.price}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

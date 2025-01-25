@@ -9,13 +9,13 @@ import "./Components/login.css"; // Your CSS file for styling
 const App = () => {
   return (
     <Router>
-      <div className="App">
+      {/* <div className="App"> */}
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<Home />} />
         </Routes>
-      </div>
+      {/* </div> */}
     </Router>
   );
 };
