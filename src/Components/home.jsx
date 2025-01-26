@@ -17,9 +17,9 @@ const Home = () => {
   }, [navigate]);
 
   const handleLogout = () => {
-      sessionStorage.removeItem('isLoggedIn');
-      navigate('/login');
-      // alert('You have been logged out.');
+    sessionStorage.removeItem('isLoggedIn');
+    navigate('/');
+    // alert('You have been logged out.');
   };
 
   const preferences_redirect = () => {
