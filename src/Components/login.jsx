@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';  // Import Link from react-router-dom
 import { useNavigate } from 'react-router-dom';  // Use useNavigate hook for programmatic navigation
+// import { loadPanels } from './home' ;
 import './login.css';
 
 const Login = () => {
@@ -13,6 +14,7 @@ const Login = () => {
     // Hardcoded credentials
     if (username === "a" && password === "1") {
       sessionStorage.setItem("isLoggedIn", "true");
+      // loadPanels();
       navigate('/home');
     } else {
       alert("Invalid username or password!");
