@@ -20,8 +20,14 @@ const Home = () => {
   };
 
   const preferences_redirect = () =>{
-    navigate('/preferences')
+    navigate('/preferences');
   }
+
+  const handlePanelClick = () => {
+    // console.log('Panel clicked:', serviceName);
+    // You can use the navigate() function to redirect to a specific service details page if needed
+    navigate(`/booking`);
+  };
 
   // Sample panel data
   const panelsData = [
@@ -110,6 +116,7 @@ const Home = () => {
                 serviceName={data.serviceName}
                 businessName={data.businessName}
                 price={data.price}
+                onClick={() => handlePanelClick(data.serviceName)}
               />
             ))}
           </div>
