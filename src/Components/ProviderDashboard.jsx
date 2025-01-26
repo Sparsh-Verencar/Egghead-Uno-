@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BusinessHeader from './BusinessHeader';
-import JobRequestList from './JobRequestList';
 import { Container, Modal, Box, Typography, Button, List, ListItem, ListItemText } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-// Styles for the Modal
 const style = {
     position: 'absolute',
     top: '50%',
@@ -18,8 +16,8 @@ const style = {
 };
 
 const ProviderDashboard = () => {
-    const businessName = "Racnerev Dev";
-    const contactInfo = "Contact: RacDev@gmail.com.com | Phone: (123) 456-7890";
+    const [businessName, setBusinessName] = useState('');  // State to store the business name
+    const [contactInfo, setContactInfo] = useState('');  // State to store the contact info
     const imageUrl = "https://images-platform.99static.com/Z57az437UZ4_vTbrU_Hn7xELyGc=/500x500/top/smart/99designs-contests-attachments/58/58102/attachment_58102325";
 
     const [jobRequests, setJobRequests] = useState([
@@ -70,6 +68,24 @@ const ProviderDashboard = () => {
         localStorage.removeItem('token');
         navigate('/');
     };
+
+    // Fetch the latest email, phone number, and business name when the component mounts
+    useEffect(() => {
+        const fetchContactInfo = async () => {
+            try {
+                const response = await fetch('http://localhost:5001/api/latest-email');
+                const data = await response.json();
+                if (data.businessName && data.email && data.phoneNumber) {
+                    // Set business name, email, and phone number in state
+                    setBusinessName(data.businessName);
+                    setContactInfo(`${data.email} | ${data.phoneNumber}`);
+                }
+            } catch (error) {
+                console.log('Error fetching contact info:', error);
+            }
+        };
+        fetchContactInfo();
+    }, []);
 
     return (
         <Container style={{ padding: '20px' }}>
