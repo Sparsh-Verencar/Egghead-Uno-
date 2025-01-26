@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BusinessHeader from './BusinessHeader';
 import JobRequestList from './JobRequestList';
 import { Container, Modal, Box, Typography, Button, List, ListItem, ListItemText } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 // Styles for the Modal
 const style = {
@@ -17,9 +18,9 @@ const style = {
 };
 
 const ProviderDashboard = () => {
-    const businessName = "Awesome Business LLC";
-    const contactInfo = "Contact: info@awesomebusiness.com | Phone: (123) 456-7890";
-    const imageUrl = "https://via.placeholder.com/100";
+    const businessName = "Racnerev Dev";
+    const contactInfo = "Contact: RacDev@gmail.com.com | Phone: (123) 456-7890";
+    const imageUrl = "https://images-platform.99static.com/Z57az437UZ4_vTbrU_Hn7xELyGc=/500x500/top/smart/99designs-contests-attachments/58/58102/attachment_58102325";
 
     const [jobRequests, setJobRequests] = useState([
         { id: 1, jobTitle: "Web Development", clientName: "John Doe", contact: "john@example.com", duration: "3 weeks", status: "Pending" },
@@ -36,6 +37,8 @@ const ProviderDashboard = () => {
 
     const [open, setOpen] = useState(false);
     const [selectedJob, setSelectedJob] = useState(null);
+
+    const navigate = useNavigate();
 
     const handleOpen = (job) => {
         setSelectedJob(job);
@@ -61,6 +64,11 @@ const ProviderDashboard = () => {
         setJobRequests(jobRequests.map(request =>
             request.id === id ? { ...request, status: "Complete" } : request
         ));
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/');
     };
 
     return (
@@ -137,6 +145,9 @@ const ProviderDashboard = () => {
                     )}
                 </Box>
             </Modal>
+
+            <Button variant="contained" onClick={handleLogout} style={{ position:'fixed', bottom:'20px', right:'20px' }}>Logout</Button>
+
         </Container>
     );
 };
