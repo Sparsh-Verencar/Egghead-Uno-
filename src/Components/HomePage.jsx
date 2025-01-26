@@ -10,31 +10,34 @@ const HomePage = () => {
     };
 
     const handleUserClick = () => {
-        // You can add functionality for the User button here
-        // For now, let's just log to the console
-        // console.log('User button clicked');
         navigate('/login');
     };
 
     return (
-        <Container >
+        <Container 
+            sx={{ 
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center', 
+                height: '100vh',  // Ensures full window height
+            }}
+        >
             <Box 
-                style={{ 
-                    padding: '20px', 
-                    paddingRight:'35px',
+                sx={{ 
+                    padding: '20px 35px 20px 20px', 
                     border: '1px solid #ccc', 
                     borderRadius: '8px', 
                     textAlign: 'center',
-                    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+                    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
                 }}
             >
-                <Typography color="white" variant="h5" gutterBottom>
+                <Typography sx={{ color: 'white' }} variant="h5" gutterBottom>
                     Welcome! Please choose an option:
                 </Typography>
-                <Button variant="contained" color="primary" onClick={handleUserClick} style={{ margin: '10px' }}>
+                <Button variant="contained" color="primary" onClick={handleUserClick} sx={{ margin: '10px' }}>
                     User
                 </Button>
-                <Button variant="contained" color="secondary" onClick={handleProviderClick} style={{ margin: '10px' }}>
+                <Button variant="contained" color="secondary" onClick={handleProviderClick} sx={{ margin: '10px' }}>
                     Provider
                 </Button>
             </Box>
