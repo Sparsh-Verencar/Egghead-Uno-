@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BusinessHeader from './BusinessHeader';
-import JobRequestList from './JobRequestList';
+import JobRequestList from './jobRequestList';
 import { Container } from '@mui/material';
 
 const ProviderDashboard = () => {

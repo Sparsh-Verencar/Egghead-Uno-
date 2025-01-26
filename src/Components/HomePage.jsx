@@ -12,7 +12,8 @@ const HomePage = () => {
     const handleUserClick = () => {
         // You can add functionality for the User button here
         // For now, let's just log to the console
-        console.log('User button clicked');
+        // console.log('User button clicked');
+        navigate('/login');
     };
 
     return (

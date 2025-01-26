@@ -9,13 +9,13 @@ const Home = () => {
   useEffect(() => {
     // Redirect to login if not authenticated
     if (!sessionStorage.getItem('isLoggedIn')) {
-      navigate('/');
+      navigate('/login');
     }
   }, [navigate]);
 
   const handleLogout = () => {
     sessionStorage.removeItem('isLoggedIn');
-    navigate('/');
+    navigate('/login');
     // alert('You have been logged out.');
   };
 
