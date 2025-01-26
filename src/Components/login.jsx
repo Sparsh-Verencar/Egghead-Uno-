@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';  // Import Link from react-router-dom
+import { useNavigate } from 'react-router-dom';  // Use useNavigate hook for programmatic navigation
+// import { loadPanels } from './home' ;
 import './login.css';
 
 const Login = () => {

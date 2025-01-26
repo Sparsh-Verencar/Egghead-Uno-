@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './preferences.css';
 import { useNavigate } from 'react-router-dom';  // To navigate programmatically
+// import { useNavigate } from 'react-router-dom';
+
 
 const ServicePreferences = () => {
-    const navigate = useNavigate();  // Hook to navigate programmatically
+    const navigate = useNavigate();
     const [preferences, setPreferences] = useState({
         serviceType: "",
         location: "",
@@ -31,14 +33,15 @@ const ServicePreferences = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(preferences);
-        alert("Preferences saved!");
-
+    
+        if (preferences.location && preferences.priceRange.length === 2) {
+            navigate('/home', { state: { location: preferences.location, priceRange: preferences.priceRange } });
+        } else {
+            console.error('Form data is incomplete');
+        }
     };
-    const home_redirect = () => {
-
-        navigate('/home');
-    };
+    
+    
 
     return (
         <div className="preference-form">
@@ -124,7 +127,7 @@ const ServicePreferences = () => {
                 </label>
 
                 {/* Submit Button */}
-                <button type="submit" onClick={home_redirect}>Save Preferences</button>
+                <button type="submit" >Save Preferences</button>
             </form>
         </div>
     );

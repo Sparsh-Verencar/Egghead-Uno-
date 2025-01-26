@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import BusinessHeader from './BusinessHeader';
-import { Container, Modal, Box, Typography, Button, List, ListItem, ListItemText } from '@mui/material';
+import { Container, Modal, Box, Typography, Button, List, ListItem, ListItemText, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const style = {
@@ -33,8 +33,24 @@ const ProviderDashboard = () => {
         { id: 10, jobTitle: "Network Architecture", clientName: "David King", contact: "david@example.com", duration: "3 weeks", status: "Pending" }
     ]);
 
+    const [services, setServices] = useState([
+        { id: 1, jobType: "Web Development", description: "Development of web applications", duration: "3 weeks", pricing: "$1000", paymentMethods: "PayPal, Credit Card" },
+        // ... other services ...
+    ]);
+
     const [open, setOpen] = useState(false);
     const [selectedJob, setSelectedJob] = useState(null);
+    const [editingOpen, setEditingOpen] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
+    const [openServiceModal, setOpenServiceModal] = useState(false);
+    const [selectedService, setSelectedService] = useState({
+        jobType: '',
+        description: '',
+        duration: '',
+        pricing: '',
+        paymentMethods: ''
+    });
+    const [openServicesList, setOpenServicesList] = useState(false);
 
     const navigate = useNavigate();
 
@@ -46,6 +62,39 @@ const ProviderDashboard = () => {
     const handleClose = () => {
         setOpen(false);
         setSelectedJob(null);
+    };
+
+    const handleEditOpen = () => {
+        setEditingOpen(true);
+        setIsEditing(true);
+    };
+
+    const handleEditClose = () => {
+        setEditingOpen(false);
+        setIsEditing(false);
+    };
+
+    const handleServiceOpen = () => {
+        setOpenServiceModal(true);
+    };
+
+    const handleServiceClose = () => {
+        setOpenServiceModal(false);
+        setSelectedService({
+            jobType: '',
+            description: '',
+            duration: '',
+            pricing: '',
+            paymentMethods: ''
+        });
+    };
+
+    const handleServicesListOpen = () => {
+        setOpenServicesList(true);
+    };
+
+    const handleServicesListClose = () => {
+        setOpenServicesList(false);
     };
 
     const acceptJobRequest = (id) => {
@@ -62,6 +111,18 @@ const ProviderDashboard = () => {
         setJobRequests(jobRequests.map(request =>
             request.id === id ? { ...request, status: "Complete" } : request
         ));
+    };
+
+    const saveService = () => {
+        setServices([...services, { 
+            id: services.length + 1, 
+            jobType: selectedService.jobType, 
+            description: selectedService.description, 
+            duration: selectedService.duration, 
+            pricing: selectedService.pricing, 
+            paymentMethods: selectedService.paymentMethods 
+        }]);
+        handleServiceClose();
     };
 
     const handleLogout = () => {
@@ -89,7 +150,15 @@ const ProviderDashboard = () => {
 
     return (
         <Container style={{ padding: '20px' }}>
-            <BusinessHeader name={businessName} contact={contactInfo} imageUrl={imageUrl} />
+            <BusinessHeader 
+                name={businessName} 
+                contact={contactInfo} 
+                imageUrl={imageUrl} 
+                onEdit={handleEditOpen} 
+                isEditing={isEditing} 
+                setBusinessName={setBusinessName} 
+                setContactInfo={setContactInfo}
+            />
             <h2>Job Requests</h2>
             <List>
                 {jobRequests.map((request) => (
@@ -107,6 +176,7 @@ const ProviderDashboard = () => {
                 ))}
             </List>
 
+            {/* Job Details Modal */}
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -162,8 +232,138 @@ const ProviderDashboard = () => {
                 </Box>
             </Modal>
 
-            <Button variant="contained" onClick={handleLogout} style={{ position:'fixed', bottom:'20px', right:'20px' }}>Logout</Button>
+            {/* Edit Business Details Modal */}
+            <Modal
+                open={editingOpen}
+                onClose={handleEditClose}
+                aria-labelledby="edit-modal-title"
+                aria-describedby="edit-modal-description"
+            >
+                <Box sx={style}>
+                    <Typography id="edit-modal-title" variant="h6" component="h2">
+                        Edit Business Details
+                    </Typography>
+                    <TextField
+                        label="Business Name"
+                        value={businessName}
+                        onChange={(e) => setBusinessName(e.target.value)}
+                        size="small"
+                        fullWidth
+                        margin="normal"
+                    />
+                    <TextField
+                        label="Contact Info"
+                        value={contactInfo}
+                        onChange={(e) => setContactInfo(e.target.value)}
+                        size="small"
+                        fullWidth
+                        margin="normal"
+                    />
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+                        <Button variant="contained" onClick={handleEditClose}>
+                            Save
+                        </Button>
+                        <Button variant="outlined" onClick={handleEditClose}>
+                            Cancel
+                        </Button>
+                    </div>
+                </Box>
+            </Modal>
 
+            {/* Add Service Modal */}
+            <Button variant="contained" onClick={handleServiceOpen} style={{ marginBottom: '20px' }}>
+                Add Service
+            </Button>
+            <Modal
+                open={openServiceModal}
+                onClose={handleServiceClose}
+                aria-labelledby="service-modal-title"
+                aria-describedby="service-modal-description"
+            >
+                <Box sx={style}>
+                    <Typography id="service-modal-title" variant="h6" component="h2">
+                        Add Service
+                    </Typography>
+                    <TextField
+                        label="Job Type"
+                        value={selectedService.jobType}
+                        onChange={(e) => setSelectedService({ ...selectedService, jobType: e.target.value })}
+                        size="small"
+                        fullWidth
+                        margin="normal"
+                    />
+                    <TextField
+                        label="Description"
+                        value={selectedService.description}
+                        onChange={(e) => setSelectedService({ ...selectedService, description: e.target.value })}
+                        size="small"
+                        fullWidth
+                        margin="normal"
+                        multiline
+                        rows={4}
+                    />
+                    <TextField
+                        label="Duration"
+                        value={selectedService.duration}
+                        onChange={(e) => setSelectedService({ ...selectedService, duration: e.target.value })}
+                        size="small"
+                        fullWidth
+                        margin="normal"
+                    />
+                    <TextField
+                        label="Pricing (dollars)"
+                        value={selectedService.pricing}
+                        onChange={(e) => setSelectedService({ ...selectedService, pricing: e.target.value })}
+                        size="small"
+                        fullWidth
+                        margin="normal"
+                    />
+                    <TextField
+                        label="Payment Methods (separated by comma)"
+                        value={selectedService.paymentMethods}
+                        onChange={(e) => setSelectedService({ ...selectedService, paymentMethods: e.target.value })}
+                        size="small"
+                        fullWidth
+                        margin="normal"
+                    />
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+                        <Button variant="contained" onClick={saveService}>Save</Button>
+                        <Button variant="outlined" onClick={handleServiceClose}>Cancel</Button>
+                    </div>
+                </Box>
+            </Modal>
+
+            {/* Services List Modal */}
+            <Button variant="contained" onClick={handleServicesListOpen} style={{ marginBottom: '20px' }}>
+                View Services
+            </Button>
+            <Modal
+                open={openServicesList}
+                onClose={handleServicesListClose}
+                aria-labelledby="services-list-modal-title"
+                aria-describedby="services-list-modal-description"
+            >
+                <Box sx={style}>
+                    <Typography id="services-list-modal-title" variant="h6" component="h2">
+                        Services List
+                    </Typography>
+                    <List>
+                        {services.map((service) => (
+                            <ListItem key={service.id} style={{ backgroundColor: 'white', marginBottom: '10px' }} button>
+                                <ListItemText
+                                    primary={service.jobType}
+                                    secondary={`Duration: ${service.duration} | Pricing: ${service.pricing} | Payment Methods: ${service.paymentMethods}`}
+                                />
+                                <Typography>
+                                    Description: {service.description}
+                                </Typography>
+                            </ListItem>
+                        ))}
+                    </List>
+                </Box>
+            </Modal>
+
+            <Button variant="contained" onClick={handleLogout} style={{ position: 'fixed', bottom: '20px', right: '20px' }}>Logout</Button>
         </Container>
     );
 };

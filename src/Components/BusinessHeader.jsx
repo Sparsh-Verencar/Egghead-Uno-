@@ -1,15 +1,41 @@
 import React from 'react';
-import { Paper, Typography } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, TextField } from '@mui/material';
 
-const BusinessHeader = ({ name, contact, imageUrl }) => {
+const BusinessHeader = ({ name, contact, imageUrl, onEdit, isEditing, setBusinessName, setContactInfo }) => {
     return (
-        <Paper style={{ padding: '16px', display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
-            <img src={imageUrl} alt="Business" style={{ width: '100px', height: '100px', marginRight: '20px' }} />
-            <div>
-                <Typography variant="h5">{name}</Typography>
-                <Typography variant="body1">{contact}</Typography>
-            </div>
-        </Paper>
+        <AppBar position="static">
+            <Toolbar>
+                {imageUrl && <img src={imageUrl} alt="Business Logo" style={{ marginRight: '10px', height: '40px' }} />}
+                {isEditing ? (
+                    <>
+                        <TextField
+                            label="Business Name"
+                            value={name}
+                            onChange={(e) => setBusinessName(e.target.value)}
+                            size="small"
+                            style={{ marginRight: '10px', flexBasis: '150px' }} // Adjust flex basis for width
+                        />
+                        <TextField
+                            label="Contact Info"
+                            value={contact}
+                            onChange={(e) => setContactInfo(e.target.value)}
+                            size="small"
+                            style={{ marginRight: '10px', flexBasis: '200px' }} // Adjust flex basis for width
+                        />
+                    </>
+                ) : (
+                    <>
+                        <Typography variant="h6" style={{ flexGrow: 1 }}>
+                            {name}
+                        </Typography>
+                        <Typography variant="body1" style={{ marginRight: '10px' }}>
+                            {contact}
+                        </Typography>
+                        <Button onClick={onEdit} color="inherit" size="small">Edit</Button>
+                    </>
+                )}
+            </Toolbar>
+        </AppBar>
     );
 };
 
