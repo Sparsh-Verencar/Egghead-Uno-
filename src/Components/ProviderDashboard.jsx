@@ -24,7 +24,14 @@ const ProviderDashboard = () => {
     const [jobRequests, setJobRequests] = useState([
         { id: 1, jobTitle: "Web Development", clientName: "John Doe", contact: "john@example.com", duration: "3 weeks", status: "Pending" },
         { id: 2, jobTitle: "Graphic Design", clientName: "Jane Smith", contact: "jane@example.com", duration: "2 weeks", status: "Pending" },
-        { id: 3, jobTitle: "Project Management", clientName: "Alice Johnson", contact: "alice@example.com", duration: "1 month", status: "Pending" }
+        { id: 3, jobTitle: "Project Management", clientName: "Alice Johnson", contact: "alice@example.com", duration: "1 month", status: "Pending" },
+        { id: 4, jobTitle: "SEO Optimization", clientName: "Mark Brown", contact: "mark@example.com", duration: "1 month", status: "Pending" },
+        { id: 5, jobTitle: "Content Writing", clientName: "Sarah Wilson", contact: "sarah@example.com", duration: "2 weeks", status: "Pending" },
+        { id: 6, jobTitle: "Mobile App Development", clientName: "Tom Clark", contact: "tom@example.com", duration: "4 weeks", status: "Pending" },
+        { id: 7, jobTitle: "Digital Marketing Strategy", clientName: "Emily Stone", contact: "emily@example.com", duration: "3 weeks", status: "Pending" },
+        { id: 8, jobTitle: "UI/UX Design", clientName: "Mike Green", contact: "mike@example.com", duration: "2 weeks", status: "Pending" },
+        { id: 9, jobTitle: "Database Management", clientName: "Rachel Adams", contact: "rachel@example.com", duration: "1 month", status: "Pending" },
+        { id: 10, jobTitle: "Network Architecture", clientName: "David King", contact: "david@example.com", duration: "3 weeks", status: "Pending" }
     ]);
 
     const [open, setOpen] = useState(false);
