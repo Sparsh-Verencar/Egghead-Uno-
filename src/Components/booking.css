@@ -1,0 +1,141 @@
+/* General layout */
+.booking-page {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading */
+  h1 {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  h2, h3 {
+    color: #555;
+  }
+  
+  /* Service description and images */
+  .service-images {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  
+  .service-images img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Service details */
+  .service-details {
+    background-color: #fff;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .service-details p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .service-details strong {
+    color: #333;
+  }
+  
+  /* Ratings and comments */
+  .service-rating {
+    background-color: #fff;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .service-rating h3 {
+    margin-bottom: 10px;
+  }
+  
+  .service-rating ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .service-rating li {
+    margin: 5px 0;
+    color: #777;
+  }
+  
+  /* Price selection */
+  .price-selection {
+    background-color: #fff;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .price-selection label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .price-selection input {
+    margin-right: 10px;
+  }
+  
+  /* Button styling */
+  button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .service-images {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .booking-page {
+      margin: 10px;
+      padding: 10px;
+    }
+  
+    .service-details, .service-rating, .price-selection {
+      padding: 10px;
+    }
+  
+    h1 {
+      font-size: 1.5rem;
+    }
+  
+    h2, h3 {
+      font-size: 1.2rem;
+    }
+  }
+  
